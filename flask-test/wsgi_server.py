@@ -4,6 +4,7 @@
 
 import socket
 import sys
+import time
 
 
 class WSGIServer:
@@ -11,6 +12,7 @@ class WSGIServer:
         self.listener = socket.socket()
         self.listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.listener.bind(('0.0.0.0', 4000))
+        self.listener.listen(1024)
         print('Serving HTTP on 0.0.0.0 port 4000....')
         self.app = None
         self.headers_set = None
@@ -21,7 +23,7 @@ class WSGIServer:
     def start_response(self, status, headers):
         self.headers_set = [status, headers]
 
-    def server_forver(self):
+    def server_forever(self):
         while True:
             listener = self.listener
             client_connection, client_address = listener.accept()
@@ -41,8 +43,9 @@ class WSGIServer:
                 'REQUEST_METHOD': method.decode('utf-8'),
                 'PATH_INFO': path.decode('utf-8'),
                 'SERVER_NAME': '127.0.0.1',
-                'SERVER_PORT': 4000,
+                'SERVER_PORT': '4000',
             }
+
             app_result = self.app(environ, self.start_response)
 
             response_status, response_headers = self.headers_set
@@ -55,7 +58,9 @@ class WSGIServer:
             for data in app_result:
                 response += data
 
-            print(response)
+            # print('sleep', response)
+            # print('process')
+            # time.sleep(5)
             client_connection.send(response)
             client_connection.close()
 
@@ -63,12 +68,11 @@ class WSGIServer:
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         sys.exit('Argv Error')
-
     app_path = sys.argv[1]
     module, app = app_path.split(":")
     module = __import__(module)
-    app = getattr(module, app_path)
+    app = getattr(module, app)
 
     server = WSGIServer()
     server.set_app(app)
-    server.server_forver()
+    server.server_forever()
