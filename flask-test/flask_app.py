@@ -15,6 +15,6 @@ def hello_world(user_id):
         mimetype='text/plain'
     )
 
-#
-# if __name__ == '__main__':
-#     app.run()
+
+if __name__ == '__main__':
+    app.run()
