@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-from flask import Flask, Response, request, jsonify
+from flask import Flask, Response
 
 app = Flask(__name__)
 
@@ -22,4 +22,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001, threaded=False, processes=8)
+    app.run()
