@@ -7,5 +7,9 @@
 # if not set(mode) <= {"r", "w", "b"}:
 #     raise ValueError("invalid mode %r (only r, w, b allowed)" % (mode,))
 
-a = 'a'
-print(a.split(','))
+# a = 'a'
+# print(a.split(','))
+
+import os
+if hasattr(os, "fork"):
+    print(1)
