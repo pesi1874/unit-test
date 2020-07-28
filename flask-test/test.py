@@ -10,6 +10,6 @@
 # a = 'a'
 # print(a.split(','))
 
-import os
-if hasattr(os, "fork"):
-    print(1)
+# import os
+# if hasattr(os, "fork"):
+#     print(1)

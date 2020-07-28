@@ -6,4 +6,4 @@ import bjoern
 from flask_app import app
 
 
-bjoern.run(app, '0.0.0.0', 9000)
+bjoern.run(app, '0.0.0.0', 8002)
