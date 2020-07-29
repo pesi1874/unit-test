@@ -12,11 +12,7 @@ class WSGIServer:
         self.listener = socket.socket()
         self.listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.listener.bind(('0.0.0.0', 4000))
-<<<<<<< HEAD
-        self.listener.listen(1)
-=======
         self.listener.listen(1024)
->>>>>>> 66e9b448e8345c675022f705747e27af21eb1670
         print('Serving HTTP on 0.0.0.0 port 4000....')
         self.app = None
         self.headers_set = None
