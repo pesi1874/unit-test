@@ -38,3 +38,8 @@
 #
 # for i in range(5):
 #     print(i)
+
+a = 1
+b = 0
+
+print(a or b)
