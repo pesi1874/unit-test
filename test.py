@@ -39,7 +39,6 @@
 # for i in range(5):
 #     print(i)
 
-a = 1
-b = 0
-
-print(a or b)
+d = {'a':1}
+b = {'c':2}
+print(type({**d, **b}))
