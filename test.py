@@ -39,4 +39,11 @@
 # for i in range(5):
 #     print(i)
 
+<<<<<<< HEAD
 
+=======
+a = 1
+b = 0
+
+print(a or b)
+>>>>>>> b962755c5bca307ce6123bc1622c513d944db864
