@@ -42,3 +42,7 @@
 d = {'a':1}
 b = {'c':2}
 print(type({**d, **b}))
+a = 1
+b = 0
+
+print(a or b)
